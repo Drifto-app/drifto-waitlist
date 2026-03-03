@@ -16,7 +16,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
-      <div className="overflow-x-hidden max-w-[100vw]">
+      <div className="overflow-x-hidden max-w-[100vw] pt-16">
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />

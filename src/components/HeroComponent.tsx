@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { googlePlaystore, appleLogoWhite, heroPane1, heroPane2, heroPane3, heroPane4 } from "@/assets";
+import { heroPane1, heroPane2, heroPane3, heroPane4 } from "@/assets";
+import StoreButtons from "@/components/StoreButtons";
 
 type Props = {};
 
 export default function HeroComponent({ }: Props) {
   return (
     <section id="hero" className="w-full bg-white mt-9 md:mt-0">
-      <div className="px-3 pb-16 md:px-8 md:py-26">
+      <div className="px-4 sm:px-3 pb-16 md:px-8 md:py-26">
         <div className="flex lg:grid lg:items-start gap-6 lg:gap-12 lg:grid-cols-2">
           {/* Left Content */}
           <motion.div
@@ -17,13 +18,13 @@ export default function HeroComponent({ }: Props) {
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <div className="space-y-3 md:space-y-6 max-w-2xl lg:pt-20">
-              <h1 className="text-2xl md:text-5xl lg:text-6xl font-extrabold leading-tight md:leading-12 lg:leading-14 text-gray-900">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight md:leading-12 lg:leading-14 text-gray-900">
                 <span className="whitespace-nowrap">One Platform for</span>
                 <br />
                 <span className="whitespace-nowrap text-blue-600">Every Experience.</span>
               </h1>
               <p className="max-w-lg text-sm md:text-xl leading-tight md:text-xl text-gray-600">
-                Drifo is the simplest way to discover and book unique local
+                Drifto is the simplest way to discover and book unique local
                 experiences, from hidden-gem workshops to can't-miss
                 conferences. Stop searching, start doing.
               </p>
@@ -36,53 +37,36 @@ export default function HeroComponent({ }: Props) {
                     Get Started
                   </button>
                 </div>
-                <div className="flex flex-wrap justify-between gap-2 md:gap-3">
-                  {/* Google Play */}
-                  <a
-                    href={import.meta.env.VITE_DRIFTO_PLAYSTORE_URL}
-                    target="_blank"
-                    className="flex w-full items-center gap-2 md:gap-4 rounded-lg bg-black px-3 py-2 md:px-4 md:py-3 text-white transition hover:bg-gray-800 sm:w-[48%]"
-                  >
-                    <img
-                      src={googlePlaystore}
-                      className="h-6 w-6 md:h-10 md:w-10"
-                      alt="Google Play"
-                    />
+                <StoreButtons className="justify-between" />
 
-                    <div className="flex flex-col leading-tight">
-                      <span className="text-[10px]  md:text-xs text-gray-300">Get it on</span>
-                      <span className="text-base md:text-xl lg:text-xl font-semibold">
-                        Google Play
-                      </span>
-                    </div>
-                  </a>
-
-                  {/* App Store */}
-                  <a
-                    href={import.meta.env.VITE_DRIFTO_APPSTORE_URL}
-                    target="_blank"
-                    className="flex w-full items-center gap-2 md:gap-4 rounded-lg bg-black px-3 py-2 md:px-4 md:py-3 text-white transition hover:bg-gray-800 sm:w-[48%]"
-                  >
-                    <img
-                      src={appleLogoWhite}
-                      className="h-6 w-6 md:h-10 md:w-10"
-                      alt="App Store"
-                    />
-
-                    <div className="flex flex-col leading-tight">
-                      <span className="text-[10px] md:text-xs text-gray-300">
-                        Download on the
-                      </span>
-                      <span className="text-base md:text-xl lg:text-xl font-semibold">App Store</span>
-                    </div>
-                  </a>
-                </div>
+                {/* Social Proof */}
+                {/* <motion.div
+                  className="flex items-center gap-3 pt-2"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.6 }}
+                >
+                  <div className="flex -space-x-2.5">
+                    {["Felix", "Aneka", "Leo", "Zara", "Milo"].map((name, i) => (
+                      <img
+                        key={name}
+                        src={`https://api.dicebear.com/9.x/notionists/svg?seed=${name}`}
+                        alt=""
+                        className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 object-cover"
+                        style={{ zIndex: 5 - i }}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    <span className="font-semibold text-gray-900">200+</span> users already on Drifto
+                  </p>
+                </motion.div> */}
               </div>
             </div>
           </motion.div>
 
           {/* Right Visual */}
-          <div className="flex justify-center md:justify-end relative md:bottom-16">
+          <div className="hidden sm:flex justify-center md:justify-end relative md:bottom-16">
             <motion.img
               className="w-1/2  lg:w-1/4 relative"
               initial={{

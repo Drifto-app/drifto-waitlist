@@ -7,7 +7,7 @@ type Props = {};
 export default function DriftoBanner({ }: Props) {
   return (
     <motion.div
-      className="px-6 w-screen pt-20"
+      className="px-6 w-full pt-20"
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}

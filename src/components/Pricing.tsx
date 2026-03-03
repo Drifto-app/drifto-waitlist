@@ -1,7 +1,8 @@
-"use client";
+
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 
 export default function Pricing() {
   const container = {
@@ -72,14 +73,14 @@ export default function Pricing() {
           {/* Pricing cards */}
           <motion.div
             variants={container}
-            className="flex flex-col md:flex-row gap-6 justify-center items-center md:items-stretch"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center sm:items-stretch overflow-visible"
           >
             {/* Free */}
             <motion.div
               variants={fadeUp}
-              className="max-w-sm w-full border border-gray-300 text-center rounded-3xl flex flex-col hover:shadow-xl transition-shadow duration-300"
+              className="max-w-xs sm:max-w-none w-full border border-gray-200 text-center rounded-3xl flex flex-col hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="border-b border-gray-300 p-8 space-y-3">
+              <div className="border-b border-gray-200 p-8 space-y-3">
                 <h4 className="text-2xl font-bold">Free Events</h4>
                 <p className="text-gray-600 leading-relaxed">
                   Everything you need to start hosting and joining experiences
@@ -94,19 +95,20 @@ export default function Pricing() {
               </div>
 
               <div className="flex flex-col gap-4 px-8 pt-8 flex-1">
-                <p className="text-gray-700">No hidden fees or setup costs</p>
-                <p className="text-gray-700">
+                <FeatureItem>No hidden fees or setup costs</FeatureItem>
+                <FeatureItem>
                   Book and join free events instantly
-                </p>
-                <p className="text-gray-700">
+                </FeatureItem>
+                <FeatureItem>
                   Create and share events at no cost
-                </p>
+                </FeatureItem>
               </div>
 
               <div className="p-8">
                 <a
                   href={import.meta.env.VITE_DRIFTO_WEBAPP_URL}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-blue-600 text-white px-6 py-4 font-semibold text-lg rounded-xl w-full block hover:bg-blue-700 transition-colors duration-200"
                 >
                   Get Started
@@ -117,31 +119,38 @@ export default function Pricing() {
             {/* Paid */}
             <motion.div
               variants={fadeUp}
-              className="max-w-sm w-full border border-gray-300 text-center rounded-3xl flex flex-col hover:shadow-xl transition-shadow duration-300 bg-blue-600 text-white"
+              className="max-w-xs sm:max-w-none w-full text-center rounded-3xl flex flex-col hover:shadow-2xl transition-shadow duration-300 bg-blue-600 text-white relative lg:scale-105 ring-2 ring-blue-400/50"
             >
-              <div className="border-b border-gray-300 p-8 space-y-3">
+              {/* Most Popular badge */}
+              {/* <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <span className="bg-black text-white text-xs font-bold px-4 py-1.5 rounded-full tracking-wide uppercase shadow-lg">
+                  Most Popular
+                </span>
+              </div> */}
+
+              <div className="border-b border-blue-400/30 p-8 pt-10 space-y-3">
                 <h4 className="text-2xl font-bold">Paid Events</h4>
-                <p className="leading-relaxed">
+                <p className="leading-relaxed text-blue-100">
                   Everything in Free, plus the power to sell your experiences.
                 </p>
                 <p className="text-3xl font-bold">
                   4.5% + ₦100
-                  <span className="text-base font-normal">/per ticket</span>
+                  <span className="text-base font-normal text-blue-200">/per ticket</span>
                 </p>
               </div>
 
               <div className="flex flex-col gap-4 px-8 pt-8 flex-1">
-                <p>₦100 service fee for tickets above ₦1500</p>
-                {/* <p>Free sharing on Drifto & external platforms</p> */}
-                <p>Sell unlimited tickets, anytime</p>
-                <p>Fast ticketing with mobile device scanning</p>
+                <FeatureItem variant="light">₦100 service fee for tickets above ₦1500</FeatureItem>
+                <FeatureItem variant="light">Sell unlimited tickets, anytime</FeatureItem>
+                <FeatureItem variant="light">Fast ticketing with mobile device scanning</FeatureItem>
               </div>
 
               <div className="p-8">
                 <a
                   href={import.meta.env.VITE_DRIFTO_WEBAPP_URL}
                   target="_blank"
-                  className="bg-white text-blue-500 px-6 py-4 font-semibold text-lg rounded-xl w-full block hover:bg-gray-100 transition-colors duration-200"
+                  rel="noopener noreferrer"
+                  className="bg-white text-blue-600 px-6 py-4 font-semibold text-lg rounded-xl w-full block hover:bg-gray-100 transition-colors duration-200"
                 >
                   Get Started
                 </a>
@@ -151,5 +160,25 @@ export default function Pricing() {
         </div>
       </motion.div>
     </section>
+  );
+}
+
+function FeatureItem({
+  children,
+  variant = "dark",
+}: {
+  children: React.ReactNode;
+  variant?: "dark" | "light";
+}) {
+  return (
+    <div className="flex items-center gap-3 text-left">
+      <Check
+        className={`w-5 h-5 shrink-0 ${variant === "light" ? "text-blue-200" : "text-blue-500"
+          }`}
+      />
+      <span className={variant === "light" ? "text-blue-50" : "text-gray-700"}>
+        {children}
+      </span>
+    </div>
   );
 }

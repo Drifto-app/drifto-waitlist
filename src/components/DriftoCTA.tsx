@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
-import { googlePlaystore, appleLogoWhite } from "@/assets";
+import StoreButtons from "@/components/StoreButtons";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 80 },
@@ -76,42 +76,10 @@ export default function DriftoCTA() {
 
           {/* Buttons */}
           <motion.div
-            className="flex flex-col gap-4 w-full sm:w-auto items-center lg:items-start"
+            className="flex flex-col gap-4 w-full sm:w-auto sm:min-w-[320px] items-center lg:items-start"
             variants={itemVariants}
           >
-            <div className="flex flex-wrap justify-center lg:justify-start gap-3 w-full">
-              <a
-                href={import.meta.env.VITE_DRIFTO_PLAYSTORE_URL}
-                target="_blank"
-                className="flex flex-1 items-center gap-2 rounded-md bg-black px-3 py-2 text-white transition hover:bg-gray-800"
-              >
-                <img
-                  src={googlePlaystore}
-                  className="h-8 w-8"
-                  alt="Google Play"
-                />
-                <div className="flex flex-col leading-tight">
-                  <span className="text-xs text-gray-300">Get it on</span>
-                  <span className="text-md font-semibold">Google Play</span>
-                </div>
-              </a>
-
-              <a
-                href={import.meta.env.VITE_DRIFTO_APPSTORE_URL}
-                target="_blank"
-                className="flex flex-1 items-center gap-2 rounded-md bg-black px-3 py-2 text-white transition hover:bg-gray-800"
-              >
-                <img
-                  src={appleLogoWhite}
-                  className="w-6"
-                  alt="App Store"
-                />
-                <div className="flex flex-col leading-tight">
-                  <span className="text-xs text-gray-300">Download on the</span>
-                  <span className="text-md font-semibold">App Store</span>
-                </div>
-              </a>
-            </div>
+            <StoreButtons className="justify-center lg:justify-start w-full" />
 
             <button
               onClick={() => window.open(import.meta.env.VITE_DRIFTO_WEBAPP_URL, "_blank")}

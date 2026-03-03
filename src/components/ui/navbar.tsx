@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BiMenu, BiX } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
-import { driftoLogo, appleIcon, googlePlaystore, appleLogoWhite } from "@/assets";
+import { driftoLogo, appleIcon, googlePlaystore } from "@/assets";
+import StoreButtons from "@/components/StoreButtons";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -24,9 +25,9 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="w-screen z-60 top-0 bg-white relative">
+    <nav className="w-full z-50 top-0 left-0 bg-white fixed shadow-sm">
       <div
-        className="flex items-center justify-between relative pl-5 md:p-20 pr-5 py-4 md:py-4 bg-white z-50"
+        className="flex items-center justify-between relative pl-5 md:px-8 lg:px-20 pr-5 py-4 md:py-4 bg-white z-50"
       >
         {/* Logo */}
         <img
@@ -141,41 +142,15 @@ export default function Navbar() {
                 F.A.Q
               </a>
 
-              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                <a
-                  href={import.meta.env.VITE_DRIFTO_PLAYSTORE_URL}
-                  target="_blank"
-                  className="flex items-center gap-2 rounded-md bg-black px-3 py-2 text-white transition hover:bg-gray-800"
-                >
-                  <img
-                    src={googlePlaystore}
-                    className="h-8 w-8"
-                    alt="Google Play"
-                  />
-                  <div className="flex flex-col leading-tight">
-                    <span className="text-xs text-gray-300">Get it on</span>
-                    <span className="text-md font-semibold">Google Play</span>
-                  </div>
-                </a>
+              <StoreButtons variant="compact" />
 
-                <a
-                  href={import.meta.env.VITE_DRIFTO_APPSTORE_URL}
-                  target="_blank"
-                  className="flex items-center gap-2 rounded-md bg-black px-3 py-2 text-white transition hover:bg-gray-800"
-                >
-                  <img
-                    src={appleLogoWhite}
-                    className="w-6"
-                    alt="App Store"
-                  />
-                  <div className="flex flex-col leading-tight">
-                    <span className="text-xs text-gray-300">Download on the</span>
-                    <span className="text-md font-semibold">App Store</span>
-                  </div>
-                </a>
-              </div>
-
-              <button className="mt-2 rounded-lg bg-blue-500 font-bold text-sm py-3 text-white">
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  window.open(import.meta.env.VITE_DRIFTO_WEBAPP_URL, "_blank");
+                }}
+                className="mt-2 rounded-lg bg-blue-500 font-bold text-sm py-3 text-white cursor-pointer hover:bg-blue-600 transition"
+              >
                 Get Started
               </button>
             </motion.div>
