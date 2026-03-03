@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { heroPane1, heroPane2, heroPane3, heroPane4 } from "@/assets";
+import { heroPane1, heroPane2, heroPane3, heroPane4, smallImagePane } from "@/assets";
 import StoreButtons from "@/components/StoreButtons";
 
 type Props = {};
@@ -10,7 +10,7 @@ export default function HeroComponent({ }: Props) {
   return (
     <section id="hero" className="w-full bg-white mt-9 md:mt-0">
       <div className="px-4 sm:px-3 pb-16 md:px-8 md:py-26">
-        <div className="flex lg:grid lg:items-start gap-6 lg:gap-12 lg:grid-cols-2">
+        <div className="flex flex-col sm:flex-row lg:grid lg:items-start gap-6 lg:gap-12 lg:grid-cols-2">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -28,6 +28,17 @@ export default function HeroComponent({ }: Props) {
                 experiences, from hidden-gem parties to can't-miss
                 conferences. Stop searching, start doing.
               </p>
+              {/* Right Visual – Mobile: single image */}
+              <div className="flex items-center my-10 justify-center sm:hidden w-full max-w-[650px]">
+                <motion.img
+                  className="w-full aspect-[1.5/1] rounded-xl object-cover"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  src={smallImagePane}
+                  alt="Drifto experience"
+                />
+              </div>
               <div className="w-full md:block space-y-4 md:space-y-6 lg:pr-15">
                 <div className="flex flex-wrap items-center gap-4 w-full">
                   <button
@@ -65,10 +76,12 @@ export default function HeroComponent({ }: Props) {
             </div>
           </motion.div>
 
-          {/* Right Visual */}
+
+
+          {/* Right Visual – Tablet & Desktop: multi-image */}
           <div className="hidden sm:flex justify-center md:justify-end relative md:bottom-16">
             <motion.img
-              className="w-1/2  lg:w-1/4 relative"
+              className="w-1/2 lg:w-1/4 relative"
               initial={{
                 y: -50,
                 opacity: 0,

@@ -11,4 +11,5 @@ export { default as heroPane1 } from './images/1st_pane.png';
 export { default as heroPane2 } from './images/2nd_pane.png';
 export { default as heroPane3 } from './images/3rd_pane.png';
 export { default as heroPane4 } from './images/4th_pane.png';
+export { default as smallImagePane } from './images/image1.jpeg';
 export { default as mobileScreenshot } from './images/mobile_screenshot.png';
