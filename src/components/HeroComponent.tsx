@@ -24,8 +24,8 @@ export default function HeroComponent({ }: Props) {
                 <span className="whitespace-nowrap text-blue-600">Every Experience.</span>
               </h1>
               <p className="max-w-lg text-sm md:text-xl leading-tight md:text-xl text-gray-600">
-                Drifto is the simplest way to discover and book unique local
-                experiences, from hidden-gem workshops to can't-miss
+                Drifto is the simplest way to discover and book unique
+                experiences, from hidden-gem parties to can't-miss
                 conferences. Stop searching, start doing.
               </p>
               <div className="w-full md:block space-y-4 md:space-y-6 lg:pr-15">
